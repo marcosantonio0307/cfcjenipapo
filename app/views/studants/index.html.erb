@@ -1,0 +1,27 @@
+<div class="label">
+	<span>Alunos Cadastrados</span>
+</div>
+
+<table class="table table-bordered">
+	<thead>
+		<th>Nome</th>
+		<th>CPF</th>
+		<th>Telefone</th>
+		<th>Endereço</th>
+		<th>Bairro</th>
+		<th>Cidade</th>
+	</thead>
+	<tbody>
+		<% @studants.each do |studant| %>
+		<tr>
+			<td><%= studant.name %></td>
+			<td><%= studant.cpf %></td>
+			<td><%= studant.fone %></td>
+			<td><%= studant.address %></td>
+			<td><%= studant.district %></td>
+			<td><%= studant.city %></td>
+			<td><%= link_to :exibir, studant_path(studant), class: 'btn btn-primary' %></td>
+		</tr>
+		<% end %>
+	</tbody>
+</table>

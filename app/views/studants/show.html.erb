@@ -1,0 +1,39 @@
+<div class="label">
+	<span>Aluno</span>
+</div>
+
+<div class="form-center">
+
+	<div class="options">
+		<span><input type="button" value="Voltar" onclick="history.go(-1)" class="btn btn-default"></span>
+		<span><%= link_to :editar, edit_studant_path(@studant), class: 'btn btn-primary' %></span>
+		<span><%= link_to :excluir, studant_path(@studant), method: :delete, class: 'btn btn-danger', data:{confirm: "Deseja excluir #{@studant.name}"} %></span>
+	</div>
+
+	<%= form_for @studant do |f| %>
+		<div class="form-group">
+			<%= f.label :nome %>
+			<%= f.text_field :name, class: 'form-control', :disabled=>true %>
+		</div>
+		<div class="form-group">
+			<%= f.label :cpf %>
+			<%= f.text_field :cpf, class: 'form-control', :disabled=>true %>
+		</div>
+		<div class="form-group">
+			<%= f.label :telefone %>
+			<%= f.text_field :fone, class: 'form-control', :disabled=>true %>
+		</div>
+		<div class="form-group">
+			<%= f.label :endereco %>
+			<%= f.text_field :address, class: 'form-control', :disabled=>true %>
+		</div>
+		<div class="form-group">
+			<%= f.label :bairro %>
+			<%= f.text_field :district, class: 'form-control', :disabled=>true %>
+		</div>
+		<div class="form-group">
+			<%= f.label :cidade %>
+			<%= f.text_field :city, class: 'form-control', :disabled=>true %>
+		</div>
+	<% end %>
+</div>
