@@ -1,0 +1,23 @@
+<div class="label">
+	<span>Processos</span>
+</div>
+
+<table class="table table-bordered">
+	<thead>
+		<th>Numero</th>
+		<th>Aluno</th>
+		<th>Categoria</th>
+		<th>Status</th>
+	</thead>
+	<tbody>
+		<% @procedures.each do |procedure| %>
+		<tr>
+			<td><%= procedure.number %></td>
+			<td><%= procedure.studant.name %></td>
+			<td><%= procedure.category %></td>
+			<td><%= procedure.status %></td>
+			<td><%= link_to 'Exibir', procedure_path(procedure), class: 'btn btn-primary' %></td>
+		</tr>
+		<% end %>
+	</tbody>
+</table>

@@ -1,0 +1,61 @@
+<div class="label">
+	<span>Processo: <%= @procedure.number %></span>
+</div>
+
+<div class="form-center">
+	<div class="options">
+		<span><input type="button" value="Voltar" onclick="history.go(-1)" class="btn btn-default"></span>
+		<span><%= link_to 'Editar', edit_procedure_path(@procedure), class: 'btn btn-primary' %></span>
+		<span><%= link_to 'Fez Aula', procedure_class_path(@procedure), class: 'btn btn-warning' %></span>
+		<td><%= link_to 'Excluir', procedure_path(@procedure), method: :delete, class: 'btn btn-danger', data:{confirm: 'Deseja Excluir o Processo?'} %></td>
+	</div>
+	<div class="form-group">
+		<%= label_tag :aluno %>
+		<%= text_field_tag :studant, @procedure.studant.name, :disabled=>true, class: 'form-control' %>
+	</div>
+	<div class="form-group">
+		<%= label_tag 'Numero do Processo' %>
+		<%= text_field_tag :number, @procedure.number, :disabled=>true, class: 'form-control' %>
+	</div>
+	<div class="form-group">
+		<%= label_tag 'Vencimento do Processo' %>
+		<%= text_field_tag :due_date, datebr(@procedure.due_date), :disabled=>true, class: 'form-control' %>
+	</div>
+	<div class="form-group">
+		<%= label_tag :categoria %>
+		<%= text_field_tag :category, @procedure.category, :disabled=>true, class: 'form-control' %>
+	</div>
+	<div class="form-group">
+		<%= label_tag :situacao %>
+		<%= text_field_tag :status, @procedure.status, :disabled=>true, class: 'form-control' %>
+	</div>
+	<div class="card">
+		<%= label_tag 'Horas de Aula' %><br>
+		<span style="font-weight: bold;">A:</span>
+		<%= @procedure.class_a %><br>
+		<span style="font-weight: bold;">B:</span>
+		<%= @procedure.class_b %><br>
+		<span style="font-weight: bold;">Teórica:</span>
+		<%= @procedure.class_t %>
+	</div><br>
+
+	<%= label_tag :Parcelas %>
+	<div>
+		<table class="table table-bordered">
+			<thead>
+				<th>Vencimento</th>
+				<th>Valor</th>
+				<th>Status</th>
+			</thead>
+			<tbody>
+				<% @portions.each do |portion| %>
+				<tr>
+					<td><%= datebr(portion.due_date) %></td>
+					<td><%= number_to_currency portion.price %></td>
+					<td><%= portion.status %></td>
+				</tr>
+				<% end %>
+			</tbody>
+		</table>
+	</div>
+</div>

@@ -1,0 +1,20 @@
+<div class="label">
+	<span>Parcelas</span>
+</div>
+
+<table class="table table-bordered">
+	<thead>
+		<th>Vencimento</th>
+		<th>Valor</th>
+		<th>Status</th>
+	</thead>
+	<tbody>
+		<% @portions.each do |portion| %>
+		<tr>
+			<td><%= portion.due_date %></td>
+			<td><%= portion.price %></td>
+			<td><%= portion.status %></td>
+		</tr>
+		<% end %>
+	</tbody>
+</table>

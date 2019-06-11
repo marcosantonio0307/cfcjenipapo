@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  number: MyString
+  studant: one
+  category: MyString
+  class_a: 9.99
+  class_b: 9.99
+  class_t: 9.99
+  status: MyString
+
+two:
+  number: MyString
+  studant: two
+  category: MyString
+  class_a: 9.99
+  class_b: 9.99
+  class_t: 9.99
+  status: MyString

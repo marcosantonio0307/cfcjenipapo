@@ -1,0 +1,47 @@
+<div class="label">
+	<span>Pagamento</span>
+</div>
+
+<div class="form-center">
+	<%= form_tag new_procedure_portion_path(@procedure), method: :get do %>
+		
+		<div class="form-group">
+			<%= label_tag 'Forma de Pagamento' %>
+			<%= select_tag :payment, options_for_select(['parcelado', 'a vista']), class: 'form-control', id: "options", onchange: "optionCheck()" %>
+		</div>
+
+		<div id="hiddenDiv">
+			<div class="form-group">
+				<%= label_tag 'Numero de Parcelas' %>
+				<%= number_field_tag :number_portions, nil, class: 'form-control' %>
+			</div>
+
+			<div class="form-group">
+				<%= label_tag 'Vencimento' %>
+				<%= date_field_tag :due_date, nil, class: 'form-control' %>
+			</div>
+		</div>
+
+		<div class="form-group">
+			<%= label_tag 'Valor Total' %>
+			<%= text_field_tag :total, nil, class: 'form-control' %>
+		</div>
+
+		<div class="form-group">
+			<%= button_to :finalizar, nil, class: 'btn btn-success' %>
+		</div>
+
+	<% end %>
+</div>
+
+<script type="text/javascript">
+    function optionCheck(){
+        var option = document.getElementById("options").value;
+        if(option == "parcelado"){
+            document.getElementById("hiddenDiv").style.visibility ="visible";
+        }
+        if(option == "a vista"){
+            document.getElementById("hiddenDiv").style.visibility ="hidden";
+        }
+    }
+</script>

@@ -184,3 +184,9 @@ label[for="bt_menu"] {
 .options {
 	margin-bottom: 1em;
 }
+
+.card {
+	background: #BCF5A9;
+	padding: 0.5em;
+	border-radius: 5px;
+}
