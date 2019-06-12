@@ -32,4 +32,24 @@ class PortionsController < ApplicationController
 		end		
 	end
 
+	def edit
+		@procedure = Procedure.find(params[:procedure_id])
+		@portion = Portion.find(params[:id])
+	end
+
+	def update
+		@procedure = Procedure.find(params[:procedure_id])
+		values = params.require(:portion).permit!
+		@portion = Portion.find(params[:id])
+		@portion.update values
+		redirect_to procedure_path(@procedure)
+	end
+
+	def destroy
+		@procedure = Procedure.find(params[:procedure_id])
+		id = params[:id]
+		Portion.destroy id
+		redirect_to procedure_path(@procedure), notice: 'Parcela Excluida!'
+	end
+
 end

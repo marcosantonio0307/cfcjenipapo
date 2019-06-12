@@ -1,12 +1,12 @@
 <div class="label">
-	<span>Processos</span>
+	<span>Busca de Processos</span>
 </div>
 
 <div>
 	<%= form_tag search_procedures_path, method: :get, class: 'navbar-form navbar-right' do %>
 		<div>
-			<%= text_field_tag :name, nil, class: 'form-control' %>
-			<%= button_to :buscar, nil, class: 'btn btn-success' %>
+			<input type="button" value="Voltar" onclick="history.go(-1)" class="btn btn-default">
+			<%= text_field_tag :name, @name, class: 'form-contorl' %>
 		</div>
 	<% end %>
 </div>

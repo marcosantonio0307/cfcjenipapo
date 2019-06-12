@@ -34,6 +34,11 @@ class StudantsController < ApplicationController
 		end
 	end
 
+	def search
+		@name = params[:name]
+		@studants = Studant.where "name like ?", "%#{@name}%"
+	end
+
 	def destroy
 		id = params[:id]
 		Studant.destroy id

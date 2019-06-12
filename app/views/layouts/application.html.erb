@@ -28,9 +28,10 @@
             </li>
             <li><a href="">Processos</a>
               <ul>
-                <li><%= link_to 'Novo Processo', new_procedure_path %></li>
-                <li><a href="">Processos Abertos</a></li>
-                <li><a href="">Processos Concluídos</a></li>
+                <li><%= link_to 'Novo Processo', new_procedure_path, data:{confirm: 'Registrar Novo Processo?'} %></li>
+                <li><%= link_to 'Abertos', procedures_opens_path %></li>
+                <li><%= link_to 'Concluidos', procedures_closeds_path %></li>
+                <li><%= link_to 'Todos', procedures_path %></li>
               </ul>
             </li>
             <li><a href="">Agendamentos</a>

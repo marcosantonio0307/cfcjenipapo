@@ -1,4 +1,11 @@
 class ProceduresController < ApplicationController
+	def opens
+		@procedures = Procedure.where(status: 'Aberto')
+	end
+
+	def closeds
+		@procedures = Procedure.where(status: 'Concluido')
+	end
 
 	def index
 		@procedures = Procedure.all
@@ -31,6 +38,40 @@ class ProceduresController < ApplicationController
 		@procedure = Procedure.find(params[:id])
 	end
 
+	def update
+		@procedure = Procedure.find(params[:id])
+		values = params.require(:procedure).permit!
+		@procedure.update values
+
+		if @procedure.portion.first != nil
+			redirect_to procedures_path, notice: 'Processo Alterado com Sucesso!'
+		else
+			redirect_to payment_procedure_path(@procedure)
+		end
+	end
+
+	def search
+		@name = params[:name]
+		studant = Studant.where "name like ?", "%#{@name}%"
+		studant = studant.first
+		@procedures = Procedure.where(studant_id: studant.id)
+	end
+
+	def payment
+		@procedure = Procedure.find(params[:id])
+	end
+
+	def registred_class
+		@procedure = Procedure.find(params[:id])
+		if @procedure.category == 'A'
+			@options = ['A', 'Teorica']
+		elsif @procedure.category == 'B'
+			@options = ['B', 'Teorica']
+		else
+			@options = ['A', 'B', 'Teorica']
+		end
+	end
+
 	def new_class
 		@procedure = Procedure.find(params[:id])
 		category = params[:category]
@@ -53,20 +94,11 @@ class ProceduresController < ApplicationController
 
 	end
 
-	def update
+	def finish
 		@procedure = Procedure.find(params[:id])
-		values = params.require(:procedure).permit!
-		@procedure.update values
+		@procedure.update(status: 'Concluido')
 
-		if @procedure.portion.first != nil
-			redirect_to procedures_path, notice: 'Processo Alterado com Sucesso!'
-		else
-			redirect_to payment_procedure_path(@procedure)
-		end
-	end
-
-	def payment
-		@procedure = Procedure.find(params[:id])
+		redirect_to procedure_path(@procedure), notice: 'Processo Finalizado com Sucesso!'
 	end
 	
 	def destroy
