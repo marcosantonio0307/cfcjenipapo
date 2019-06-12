@@ -1,0 +1,22 @@
+<div>
+	<table class="table table-bordered">
+		<thead>
+			<th>Data</th>
+			<th>Hora</th>
+			<th>Aluno</th>
+			<th>Telefone</th>
+		</thead>
+		<tbody>
+			<% @schedules.each do |schedule| %>
+			<tr>
+				<td><%= datebr(schedule.date) %></td>
+				<td><%= hourbr(schedule.hour) %></td>
+				<td><%= schedule.studant.name %></td>
+				<td><%= schedule.studant.fone %></td>
+				<td width="12%"><%= link_to 'registrar aula', procedure_class_path(schedule.studant.procedure.last), class: 'btn btn-success' %></td>
+				<td width="8%"><%= link_to 'excluir', schedule_path(schedule), method: :delete, class: 'btn btn-danger', data:{confirm: 'Deseja excluir agendamento?'} %></td>
+			</tr>
+			<% end %>
+		</tbody>
+	</table>
+</div>

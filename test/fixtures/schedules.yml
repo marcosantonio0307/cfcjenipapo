@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  studant: one
+  date: 2019-06-12
+  hour: 2019-06-12
+
+two:
+  studant: two
+  date: 2019-06-12
+  hour: 2019-06-12
