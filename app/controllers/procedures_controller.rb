@@ -1,4 +1,5 @@
 class ProceduresController < ApplicationController
+	
 	def opens
 		@procedures = Procedure.where(status: 'Aberto')
 	end

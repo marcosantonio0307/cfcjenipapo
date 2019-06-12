@@ -12,7 +12,13 @@ Rails.application.routes.draw do
 
 	get 'studants/search' => 'studants#search', as: :search_studants
 
+	get	'schedules/select' => 'schedules#select'
+	get 'schedules/:id/new' => 'schedules#new', as: :new_schedule
+	get 'schedules/day' => 'schedules#day'
+	get 'schedules/filter_date' => 'schedules#filter_date'
+
 	resources :studants, only:[:index, :new, :create, :edit, :update, :destroy, :show]
+	resources :schedules, only:[:index, :edit, :update, :destroy, :show]
 	resources :procedures do
 		resources :portions
 	end

@@ -17,6 +17,7 @@
 			<td><%= studant.district %></td>
 			<td><%= studant.city %></td>
 			<td><%= link_to :exibir, studant_path(studant), class: 'btn btn-primary' %></td>
+			<td><%= link_to 'agendar aula', new_schedule_path(studant), class: 'btn btn-warning' %></td>
 		</tr>
 		<% end %>
 	</tbody>
