@@ -5,6 +5,11 @@ class PortionsController < ApplicationController
 		@portions = Portion.where(procedure_id: params[:procedure_id])
 	end
 
+	def pending
+		@portions = Portion.where(status: 'pendente')
+		@portions = @portions.order :due_date
+	end
+
 	def new
 		@procedure = Procedure.find(params[:procedure_id])
 		payment = params[:payment]
