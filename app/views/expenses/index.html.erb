@@ -1,0 +1,28 @@
+<div class="label">
+	<span>Contas a Pagar</span>
+</div>
+
+<div class="options">
+	<%= link_to 'Nova Conta a Pagar', new_expense_path, class: 'btn btn-primary' %>
+</div>
+
+<div>
+	<table class="table table-bordered">
+		<thead>
+			<th>Vencimento</th>
+			<th>Descrição</th>
+			<th>Valor</th>
+			<th>Status</th>
+		</thead>
+		<tbody>
+			<% @expenses.each do |expense| %>
+			<tr>
+				<td><%= datebr expense.due_date %></td>
+				<td><%= expense.description %></td>
+				<td><%= number_to_currency expense.price %></td>
+				<td><%= expense.status %></td>
+			</tr>
+			<% end %>
+		</tbody>
+	</table>
+</div>

@@ -10,6 +10,8 @@ Rails.application.routes.draw do
 	get	'procedures/opens' => 'procedures#opens'
 	get	'procedures/closeds' => 'procedures#closeds'
 
+	get	'portions/pending' => 'portions#pending'
+
 	get 'studants/search' => 'studants#search', as: :search_studants
 
 	get	'schedules/select' => 'schedules#select'
@@ -19,6 +21,7 @@ Rails.application.routes.draw do
 
 	resources :studants, only:[:index, :new, :create, :edit, :update, :destroy, :show]
 	resources :schedules, only:[:index, :edit, :update, :destroy, :show]
+	resources :expenses, only:[:index, :new, :create, :destroy, :show]
 	resources :procedures do
 		resources :portions
 	end
