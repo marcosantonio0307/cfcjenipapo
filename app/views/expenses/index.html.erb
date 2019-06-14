@@ -21,6 +21,7 @@
 				<td><%= expense.description %></td>
 				<td><%= number_to_currency expense.price %></td>
 				<td><%= expense.status %></td>
+				<td width="13%"><%= link_to 'Efetuar Pagamento', pay_expense_path(expense), class: 'btn btn-success', data:{confirm: 'Deseja Registrar o Pagamento?'} %></td>
 			</tr>
 			<% end %>
 		</tbody>
