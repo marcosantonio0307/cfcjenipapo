@@ -45,8 +45,8 @@
               <ul>
                 <li><%= link_to 'A Pagar', expenses_path %></li>
                 <li><%= link_to 'A Receber', portions_pending_path %></li>
-                <li><a href="">Nova Despesa</a></li>
-                <li><a href="">Nova Receita</a></li>
+                <li><%= link_to 'Nova Despesa', cashes_new_out_path, data:{confirm: 'Registrar Nova Despesa?'} %></li>
+                <li><%= link_to 'Nova Receita', cashes_new_in_path, data:{confirm: 'Registrar Nova Receita?'} %></li>
               </ul>
             </li>
             <li><a href="">Relatorios</a>

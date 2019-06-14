@@ -190,3 +190,13 @@ label[for="bt_menu"] {
 	padding: 0.5em;
 	border-radius: 5px;
 }
+
+.index-container {
+	width: 80%;
+	margin: 0.5em auto;
+	margin-top: 12%;
+}
+
+.index-container span {
+	padding: 4px 2.5em;
+}

@@ -11,6 +11,7 @@ Rails.application.routes.draw do
 	get	'procedures/closeds' => 'procedures#closeds'
 
 	get	'portions/pending' => 'portions#pending'
+	get	'portions/:id/pay' => 'portions#pay', as: :pay_portion
 
 	get 'studants/search' => 'studants#search', as: :search_studants
 
@@ -19,9 +20,15 @@ Rails.application.routes.draw do
 	get 'schedules/day' => 'schedules#day'
 	get 'schedules/filter_date' => 'schedules#filter_date'
 
+	get 'cashes/new_in' => 'cashes#new_in'
+	get 'cashes/new_out' => 'cashes#new_out'
+
+	get 'expenses/:id/pay' => 'expenses#pay', as: :pay_expense
+
 	resources :studants, only:[:index, :new, :create, :edit, :update, :destroy, :show]
 	resources :schedules, only:[:index, :edit, :update, :destroy, :show]
 	resources :expenses, only:[:index, :new, :create, :destroy, :show]
+	resources :cashes, only:[:index, :new, :edit, :update, :destroy, :show]
 	resources :procedures do
 		resources :portions
 	end

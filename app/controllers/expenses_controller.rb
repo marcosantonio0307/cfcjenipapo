@@ -16,4 +16,11 @@ class ExpensesController < ApplicationController
 
 		redirect_to expenses_path, notice: 'Conta Salva com Sucesso!'
 	end
+
+	def pay
+		@expense = Expense.find(params[:id])
+		@expense.update(status: 'pago')
+		cash = Cash.create(category: 'Despesa', price: @expense.price, description: @expense.description )
+		redirect_to expenses_path, notice: 'Pagamento Registrado com Sucesso!'
+	end
 end

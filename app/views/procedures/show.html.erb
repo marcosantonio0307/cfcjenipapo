@@ -61,8 +61,8 @@
 					<td><%= datebr(portion.due_date) %></td>
 					<td><%= number_to_currency portion.price %></td>
 					<td><%= portion.status %></td>
-					<td><%= link_to 'Excluir', procedure_portion_path(@procedure, portion), method: :delete, class: 'btn btn-danger' %></td>
-					<td><%= link_to 'Editar', edit_procedure_portion_path(@procedure, portion), class: 'btn btn-warning' %></td>
+					<td width="8%"><%= link_to 'Excluir', procedure_portion_path(@procedure, portion), method: :delete, class: 'btn btn-danger' %></td>
+					<td width="8%"><%= link_to 'Editar', edit_procedure_portion_path(@procedure, portion), class: 'btn btn-warning' %></td>
 				</tr>
 				<% end %>
 			</tbody>

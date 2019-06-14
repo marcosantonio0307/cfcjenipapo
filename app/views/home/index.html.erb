@@ -1,0 +1,14 @@
+<div class="index-container">
+	<span><%= link_to (image_tag 'cliente.png', :width => '100px'), new_studant_path %></span>
+	<span><%= link_to (image_tag 'carro.png', :width => '100px'), new_procedure_path, data:{confirm: 'Registrar Novo Processo?'} %></span>
+	<span><%= link_to (image_tag 'agenda.png', :width => '100px'), schedules_select_path %></span>
+	<span><%= link_to (image_tag 'receita.png', :width => '100px'), cashes_new_in_path, data:{confirm: 'Registrar Nova Receita?'}%></span>
+	<span><%= link_to (image_tag 'despesa.png', :width => '100px'), cashes_new_out_path, data:{confirm: 'Registrar Nova Despesa?'}%></span>
+</div>
+<div class="index-container" style="margin-top: 0.5em;">
+	<span>Cadast. Aluno</span>
+	<span>Novo Processo</span>
+	<span>Agendar Aluno</span>
+	<span>Nova Receita</span>
+	<span>Nova Despesa</span>
+</div>

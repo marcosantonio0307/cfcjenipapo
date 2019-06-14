@@ -17,6 +17,7 @@
 				<td><%= portion.procedure.studant.name %></td>
 				<td><%= number_to_currency portion.price %></td>
 				<td><%= portion.status %></td>
+				<td width="13%"><%= link_to 'Efetuar Recebimento', pay_portion_path(portion), class: 'btn btn-success' %></td>
 			</tr>
 			<% end %>
 		</tbody>

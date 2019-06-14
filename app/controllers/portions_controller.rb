@@ -23,6 +23,7 @@ class PortionsController < ApplicationController
 			today = Time.now
 			portion = Portion.new due_date: today, price: total, status: 'pago', procedure_id: @procedure.id
 			portion.save
+			cash = Cash.create(category: 'Receita', price: portion.price, description: portion.procedure.studant.name)
 			redirect_to procedures_path, notice: 'Processo cadastrado com sucesso'
 		else
 			portion_price = total.to_f/number_portions
@@ -48,6 +49,15 @@ class PortionsController < ApplicationController
 		@portion = Portion.find(params[:id])
 		@portion.update values
 		redirect_to procedure_path(@procedure)
+	end
+
+	def pay
+		@portion = Portion.find(params[:id])
+		@portion.update(status: 'pago')
+		cash = Cash.create(category: 'Receita', price: @portion.price, description: @portion.procedure.studant.name)
+		if cash.save
+			redirect_to portions_pending_path, notice: 'Recebimento Registrado com Sucesso!'
+		end
 	end
 
 	def destroy
