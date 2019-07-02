@@ -1,0 +1,24 @@
+<div class="label">
+	<span>Relatório de Receitas</span>
+</div>
+
+<%= form_tag cashes_filter_date_path, method: :get, class: 'navbar-form navbar-right' do %>
+	<div>
+		<span style="visibility: hidden;"><%= text_field_tag :category, @category %></span>
+		<input type="button" value="Voltar" onclick="history.go(-1)" class="btn btn-default">
+		<%= date_field_tag :begin_date, @begin_date, class: 'form-control' %>
+		<%= date_field_tag :end_date, @end_date, class: 'form-control' %>
+	</div>
+<% end %>
+
+<%= render 'cashes' %>
+
+<div style="float: right;">
+	<% total = 0 %>
+	<% @cashes.each do |cash| %>
+		<% if cash.price != nil %>
+			<% total += cash.price %>
+		<% end %>
+	<% end %>
+	<%= text_field_tag :total, number_to_currency(total), :disabled=>true %>
+</div>

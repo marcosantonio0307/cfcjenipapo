@@ -2,28 +2,16 @@
 	<span>Contas a Pagar</span>
 </div>
 
+<%= form_tag expenses_filter_date_path, method: :get, class: 'navbar-form navbar-right' do %>
+	<div>
+		<%= date_field_tag :begin_date, nil, class: 'form-control' %>
+		<%= date_field_tag :end_date, nil, class: 'form-control' %>
+		<%= button_to 'Filtrar', nil, class: 'btn btn-success' %>
+	</div>
+<% end %>
+
 <div class="options">
 	<%= link_to 'Nova Conta a Pagar', new_expense_path, class: 'btn btn-primary' %>
 </div>
 
-<div>
-	<table class="table table-bordered">
-		<thead>
-			<th>Vencimento</th>
-			<th>Descrição</th>
-			<th>Valor</th>
-			<th>Status</th>
-		</thead>
-		<tbody>
-			<% @expenses.each do |expense| %>
-			<tr>
-				<td><%= datebr expense.due_date %></td>
-				<td><%= expense.description %></td>
-				<td><%= number_to_currency expense.price %></td>
-				<td><%= expense.status %></td>
-				<td width="13%"><%= link_to 'Efetuar Pagamento', pay_expense_path(expense), class: 'btn btn-success', data:{confirm: 'Deseja Registrar o Pagamento?'} %></td>
-			</tr>
-			<% end %>
-		</tbody>
-	</table>
-</div>
+<%= render 'expenses' %>

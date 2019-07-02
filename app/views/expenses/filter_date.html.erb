@@ -1,0 +1,13 @@
+<div class="label">
+	<span>Contas a Pagar</span>
+</div>
+
+<%= form_tag expenses_filter_date_path, method: :get, class: 'navbar-form navbar-right' do %>
+	<div>
+		<%= link_to :voltar, expenses_path, class: 'btn btn-default' %>
+		<%= date_field_tag :begin_date, @begin_date, class: 'form-control' %>
+		<%= date_field_tag :end_date, @end_date, class: 'form-control' %>
+	</div>
+<% end %>
+
+<%= render 'expenses' %>

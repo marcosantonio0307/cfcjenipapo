@@ -4,6 +4,25 @@ class CashesController < ApplicationController
 		@cashes = Cash.all
 	end
 
+	def cash_in
+		@cashes = Cash.where(category: 'Receita')
+		@category = 'Receita'
+	end
+
+	def cash_out
+		@cashes = Cash.where(category: 'Despesa')
+		@category = 'Despesa'
+	end
+
+	def cash_day
+		today = Time.now
+		today = today.strftime("%Y-%m-%d")
+		@cashes_in = Cash.where(category: "Receita")
+		@cashes_in = @cashes_in.where "created_at like ?", "%#{today}%"
+		@cashes_out = Cash.where(category: "Despesa")
+		@cashes_out = @cashes_out.where "created_at like ?", "%#{today}%"
+	end
+
 	def new_in
 		@cash = Cash.new
 		@cash.category = 'Receita'
@@ -27,5 +46,26 @@ class CashesController < ApplicationController
 		values = params.require(:cash).permit!
 		@cash.update values
 		redirect_to cashes_path
+	end
+
+	def filter_date
+		@cashes = Cash.where(category: params[:category])
+		@begin_date = params[:begin_date]
+		@end_date = params[:end_date]
+
+		filter = []
+
+		if @begin_date <= @end_date
+			@cashes.each do |cash|
+				if cash.created_at.strftime("%Y-%m-%d") == @begin_date
+					filter << cash
+				elsif cash.created_at.strftime("%Y-%m-%d") > @begin_date && cash.created_at.strftime("%Y-%m-%d") < @end_date
+					filter << cash
+				elsif cash.created_at.strftime("%Y-%m-%d") == @end_date
+					filter << cash
+				end
+			end
+			@cashes = filter
+		end
 	end
 end

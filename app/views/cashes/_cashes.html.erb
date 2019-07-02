@@ -1,0 +1,20 @@
+<div>
+	<table class="table table-bordered">
+		<thead>
+			<th>Data</th>
+			<th>Tipo</th>
+			<th>Descrição</th>
+			<th>Valor</th>
+		</thead>
+		<tbody>
+			<% @cashes.each do |cash| %>
+			<tr>
+				<td><%= datebr cash.created_at %></td>
+				<td><%= cash.category %></td>
+				<td><%= cash.description %></td>
+				<td><%= number_to_currency cash.price %></td>
+			</tr>
+			<% end %>
+		</tbody>
+	</table>
+</div>
