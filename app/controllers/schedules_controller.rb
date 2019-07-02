@@ -5,10 +5,16 @@ class SchedulesController < ApplicationController
 	end
 
 	def day
-		today = Time.now
+		@schedules = Schedule.order :hour
+		today = Time.zone.now
 		today = today.strftime("%Y-%m-%d")
-		@schedules = Schedule.where "date like ?", "%#{today}%"
-		@schedules = @schedules.order :hour
+		filter = []
+		@schedules.each do |schedule|
+			if schedule.date.strftime("%Y-%m-%d") == today
+				filter << schedule
+			end
+		end
+		@schedules = filter
 	end
 
 	def new

@@ -53,6 +53,7 @@ class ProceduresController < ApplicationController
 
 	def search
 		@name = params[:name]
+		@name.upcase!
 		studant = Studant.where "name like ?", "%#{@name}%"
 		studant = studant.first
 		@procedures = Procedure.where(studant_id: studant.id)

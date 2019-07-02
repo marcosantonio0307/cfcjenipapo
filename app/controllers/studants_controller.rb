@@ -12,6 +12,7 @@ class StudantsController < ApplicationController
 		cpf_registred = Studant.all.map{|s| s.cpf}
 		values = params.require(:studant).permit!
 		@studant = Studant.new values
+		@studant.name.upcase!
 
 		if cpf_registred.include?(@studant.cpf)
 			@message = 'CPF já Cadastrado!'
@@ -45,6 +46,7 @@ class StudantsController < ApplicationController
 
 	def search
 		@name = params[:name]
+		@name.upcase!
 		@studants = Studant.where "name like ?", "%#{@name}%"
 	end
 
