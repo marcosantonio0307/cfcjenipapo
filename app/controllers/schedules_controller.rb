@@ -15,7 +15,20 @@ class SchedulesController < ApplicationController
 		@studant = Studant.find(params[:id])
 		@schedule = Schedule.new
 		@schedule.studant_id = @studant.id
-		@schedule.save
+		if @studant.procedure.last != nil && @studant.procedure.last.status == 'Aberto'
+			@schedule.save
+		else
+			@message = 'Aluno nao tem Processo Aberto'
+			render 'select'
+		end
+	end
+
+	def registred_class
+		schedule = Schedule.find(params[:id])
+		procedure = schedule.studant.procedure.last.id
+		schedule.destroy
+
+		redirect_to procedure_class_path(procedure)
 	end
 
 	def update
@@ -23,30 +36,21 @@ class SchedulesController < ApplicationController
 		date = params[:date].to_time
 		hour = params[:hour]
 		@schedule.update(date: date, hour: hour)
-		redirect_to schedules_path, notice: 'Agendamento Salvo!'
+		redirect_to schedules_day_path, notice: 'Agendamento Salvo!'
 	end
 
 	def filter_date
 		@schedules = Schedule.all
-		@begin_date = params[:begin_date]
-		@end_date = params[:end_date]
+		@select_date = params[:select_date]
 
 		filter = []
 
-		if @begin_date > @end_date
-			render :index
-		else
-			@schedules.each do |schedule|
-				if schedule.date.strftime("%Y-%m-%d") == @begin_date
-					filter << schedule
-				elsif schedule.date.strftime("%Y-%m-%d") > @begin_date && schedule.date.strftime("%Y-%m-%d") < @end_date
-					filter << schedule
-				elsif schedule.date.strftime("%Y-%m-%d") == @end_date
-					filter << schedule
-				end
+		@schedules.each do |schedule|
+			if schedule.date.strftime("%Y-%m-%d") == @select_date
+				filter << schedule
 			end
-			@schedules = filter
 		end
+		@schedules = filter
 	end
 
 	def destroy

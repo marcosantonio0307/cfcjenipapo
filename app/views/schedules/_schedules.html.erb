@@ -13,7 +13,7 @@
 				<td><%= hourbr(schedule.hour) %></td>
 				<td><%= schedule.studant.name %></td>
 				<td><%= schedule.studant.fone %></td>
-				<td width="12%"><%= link_to 'registrar aula', procedure_class_path(schedule.studant.procedure.last), class: 'btn btn-success' %></td>
+				<td width="12%"><%= link_to 'registrar aula', schedule_class_path(schedule), class: 'btn btn-success' %></td>
 				<td width="8%"><%= link_to 'excluir', schedule_path(schedule), method: :delete, class: 'btn btn-danger', data:{confirm: 'Deseja excluir agendamento?'} %></td>
 			</tr>
 			<% end %>

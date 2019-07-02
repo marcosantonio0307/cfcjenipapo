@@ -1,0 +1,23 @@
+<div>
+	<table class="table table-bordered">
+		<thead>
+			<th>Vencimento</th>
+			<th>Aluno</th>
+			<th>Telefone</th>
+			<th>Valor</th>
+			<th>Status</th>
+		</thead>
+		<tbody>
+			<% @portions.each do |portion| %>
+			<tr>
+				<td><%= datebr portion.due_date %></td>
+				<td><%= portion.procedure.studant.name %></td>
+				<td><%= portion.procedure.studant.fone %></td>
+				<td><%= number_to_currency portion.price %></td>
+				<td><%= portion.status %></td>
+				<td width="13%"><%= link_to 'Efetuar Recebimento', pay_portion_path(portion), class: 'btn btn-success', data:{confirm: 'Deseja Registrar Recebimento?'} %></td>
+			</tr>
+			<% end %>
+		</tbody>
+	</table>
+</div>

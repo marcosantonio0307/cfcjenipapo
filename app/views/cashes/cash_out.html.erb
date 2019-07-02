@@ -1,0 +1,24 @@
+<div class="label">
+	<span>Relatório de Despesas</span>
+</div>
+
+<%= form_tag cashes_filter_date_path, method: :get, class: 'navbar-form navbar-right' do %>
+	<div>
+		<span style="visibility: hidden;"><%= text_field_tag :category, @category %></span>
+		<%= date_field_tag :begin_date, nil, class: 'form-control' %>
+		<%= date_field_tag :end_date, nil, class: 'form-control' %>
+		<%= button_to 'Filtrar', nil, class: 'btn btn-success' %>
+	</div>
+<% end %>
+
+<%= render 'cashes' %>
+
+<div style="float: right;">
+	<% total = 0 %>
+	<% @cashes.each do |cash| %>
+		<% if cash.price != nil %>
+			<% total += cash.price %>
+		<% end %>
+	<% end %>
+	<%= text_field_tag :total, number_to_currency(total), :disabled=>true %>
+</div>

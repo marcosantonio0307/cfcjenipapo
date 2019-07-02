@@ -9,12 +9,21 @@ class StudantsController < ApplicationController
 	end
 
 	def create
+		cpf_registred = Studant.all.map{|s| s.cpf}
 		values = params.require(:studant).permit!
-		@studant = Studant.create values
-		if @studant.save
-			redirect_to studants_path, notice: 'Cadastro efetuado com sucesso!'
-		else
+		@studant = Studant.new values
+
+		if cpf_registred.include?(@studant.cpf)
+			@message = 'CPF já Cadastrado!'
 			render :new
+		else
+			@studant.save
+			if @studant.save
+				redirect_to studants_path, notice: 'Cadastro efetuado com sucesso!'
+			else
+				@message = 'Campos Obrigatórios não Preenchidos!'
+				render :new
+			end
 		end
 	end
 

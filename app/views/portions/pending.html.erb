@@ -2,24 +2,12 @@
 	<span>Parcelas a Receber</span>
 </div>
 
-<div>
-	<table class="table table-bordered">
-		<thead>
-			<th>Vencimento</th>
-			<th>Aluno</th>
-			<th>Valor</th>
-			<th>Status</th>
-		</thead>
-		<tbody>
-			<% @portions.each do |portion| %>
-			<tr>
-				<td><%= datebr portion.due_date %></td>
-				<td><%= portion.procedure.studant.name %></td>
-				<td><%= number_to_currency portion.price %></td>
-				<td><%= portion.status %></td>
-				<td width="13%"><%= link_to 'Efetuar Recebimento', pay_portion_path(portion), class: 'btn btn-success' %></td>
-			</tr>
-			<% end %>
-		</tbody>
-	</table>
-</div>
+<%= form_tag portions_filter_date_path, method: :get, class: 'navbar-form navbar-right' do %>
+	<div>
+		<%= date_field_tag :begin_date, nil, class: 'form-control' %>
+		<%= date_field_tag :end_date, nil, class: 'form-control' %>
+		<%= button_to 'Filtrar', nil, class: 'btn btn-success' %>
+	</div>
+<% end %>
+
+<%= render 'portions' %>

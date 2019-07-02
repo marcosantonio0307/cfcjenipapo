@@ -10,6 +10,21 @@ class PortionsController < ApplicationController
 		@portions = @portions.order :due_date
 	end
 
+	def arrears
+		@portions = Portion.where(status: 'pendente')
+		today = Time.now
+		today = today.strftime("%Y-%m-%d")
+		filter = []
+
+		@portions.each do |portion|
+			if portion.due_date.strftime("%Y-%m-%d") < today
+				filter << portion
+			end
+		end
+
+		@portions = filter
+	end
+
 	def new
 		@procedure = Procedure.find(params[:procedure_id])
 		payment = params[:payment]
@@ -36,6 +51,29 @@ class PortionsController < ApplicationController
 			end
 			redirect_to procedures_path, notice: 'Processo cadastrado com sucesso'
 		end		
+	end
+
+	def filter_date
+		@portions = Portion.where(status: 'pendente')
+		@begin_date = params[:begin_date]
+		@end_date = params[:end_date]
+
+		filter = []
+
+		if @begin_date > @end_date
+			render :index
+		else
+			@portions.each do |portion|
+				if portion.due_date.strftime("%Y-%m-%d") == @begin_date
+					filter << portion
+				elsif portion.due_date.strftime("%Y-%m-%d") > @begin_date && portion.due_date.strftime("%Y-%m-%d") < @end_date
+					filter << portion
+				elsif portion.due_date.strftime("%Y-%m-%d") == @end_date
+					filter << portion
+				end
+			end
+			@portions = filter
+		end
 	end
 
 	def edit

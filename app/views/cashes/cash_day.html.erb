@@ -1,0 +1,66 @@
+<div class="label">
+	<span>Caixa do Dia</span>
+</div>
+
+<div>
+	<% total_in = 0 %>
+	<% @cashes_in.each do |cash| %>
+		<% if cash.price != nil %>
+			<% total_in += cash.price %>
+		<% end %>
+	<% end %>
+
+	<% total_out = 0 %>
+	<% @cashes_out.each do |cash| %>
+		<% if cash.price != nil %>
+			<% total_out += cash.price %>
+		<% end %>
+	<% end %>
+	<h3>Saldo: <%= number_to_currency(total_in - total_out) %></h3>
+	<h4>Entradas: <%= number_to_currency(total_in) %></h4>
+	<h4>Saídas: <%= number_to_currency(total_out) %></h4>
+</div><br>
+
+<div>
+	<h4>Receitas do Dia</h4>
+	<table class="table table-bordered" style="background: #A9F5A9">
+		<thead>
+			<th>Data</th>
+			<th>Tipo</th>
+			<th>Descrição</th>
+			<th>Valor</th>
+		</thead>
+		<tbody>
+			<% @cashes_in.each do |cash| %>
+			<tr>
+				<td><%= datebr cash.created_at %></td>
+				<td><%= cash.category %></td>
+				<td><%= cash.description %></td>
+				<td><%= number_to_currency cash.price %></td>
+			</tr>
+			<% end %>
+		</tbody>
+	</table>
+</div><br>
+
+<div>
+	<h4>Despesas do Dia</h4>
+	<table class="table table-bordered" style="background: #F6CECE">
+		<thead>
+			<th>Data</th>
+			<th>Tipo</th>
+			<th>Descrição</th>
+			<th>Valor</th>
+		</thead>
+		<tbody>
+			<% @cashes_out.each do |cash| %>
+			<tr>
+				<td><%= datebr cash.created_at %></td>
+				<td><%= cash.category %></td>
+				<td><%= cash.description %></td>
+				<td><%= number_to_currency cash.price %></td>
+			</tr>
+			<% end %>
+		</tbody>
+	</table>
+</div>

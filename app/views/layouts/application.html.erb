@@ -50,7 +50,13 @@
               </ul>
             </li>
             <li><a href="">Relatorios</a>
-              
+              <ul>
+                <li><%= link_to 'Parcel. em Atraso', portions_arrears_path %></li>
+                <li><%= link_to 'Contas em Atraso', expenses_arrears_path %></li>
+                <li><%= link_to 'Receitas', cashes_cash_in_path %></li>
+                <li><%= link_to 'Despesas', cashes_cash_out_path %></li>
+                <li><%= link_to 'Caixa do Dia', cashes_cash_day_path %></li>
+              </ul>
             </li>
             <li><a href="">Usuários</a>
               

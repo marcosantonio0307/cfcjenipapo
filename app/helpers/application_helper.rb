@@ -9,4 +9,5 @@ module ApplicationHelper
 		hour = hour.strftime("%H:%M")
 		hour
 	end
+
 end

@@ -1,0 +1,21 @@
+<div>
+	<table class="table table-bordered">
+		<thead>
+			<th>Vencimento</th>
+			<th>Descrição</th>
+			<th>Valor</th>
+			<th>Status</th>
+		</thead>
+		<tbody>
+			<% @expenses.each do |expense| %>
+			<tr>
+				<td><%= datebr expense.due_date %></td>
+				<td><%= expense.description %></td>
+				<td><%= number_to_currency expense.price %></td>
+				<td><%= expense.status %></td>
+				<td width="13%"><%= link_to 'Efetuar Pagamento', pay_expense_path(expense), class: 'btn btn-success', data:{confirm: 'Deseja Registrar o Pagamento?'} %></td>
+			</tr>
+			<% end %>
+		</tbody>
+	</table>
+</div>

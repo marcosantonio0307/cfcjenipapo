@@ -5,8 +5,7 @@
 <%= form_tag schedules_filter_date_path, method: :get, class: 'navbar-form navbar-right' do %>
 	<div>
 		<input type="button" value="Voltar" onclick="history.go(-1)" class="btn btn-default">
-		<%= date_field_tag :begin_date, @begin_date, class: 'form-control' %>
-		<%= date_field_tag :end_date, @end_date, class: 'form-control' %>
+		<%= date_field_tag :select_date, @select_date, class: 'form-control' %>
 	</div>
 <% end %>
 
