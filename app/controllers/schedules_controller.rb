@@ -1,16 +1,16 @@
 class SchedulesController < ApplicationController
 
 	def index
-		@schedules = Schedule.order :date, :hour
+		@schedules = Schedule.order :date_s, :hour_s
 	end
 
 	def day
-		@schedules = Schedule.order :hour
+		@schedules = Schedule.order :hour_s
 		today = Time.zone.now
 		today = today.strftime("%Y-%m-%d")
 		filter = []
 		@schedules.each do |schedule|
-			if schedule.date.strftime("%Y-%m-%d") == today
+			if schedule.date_s.strftime("%Y-%m-%d") == today
 				filter << schedule
 			end
 		end
@@ -39,9 +39,9 @@ class SchedulesController < ApplicationController
 
 	def update
 		@schedule = Schedule.find(params[:id])
-		date = params[:date].to_time
-		hour = params[:hour]
-		@schedule.update(date: date, hour: hour)
+		date = params[:date_s].to_time
+		hour = params[:hour_s]
+		@schedule.update(date_s: date, hour_s: hour)
 		redirect_to schedules_day_path, notice: 'Agendamento Salvo!'
 	end
 
@@ -52,7 +52,7 @@ class SchedulesController < ApplicationController
 		filter = []
 
 		@schedules.each do |schedule|
-			if schedule.date.strftime("%Y-%m-%d") == @select_date
+			if schedule.date_s.strftime("%Y-%m-%d") == @select_date
 				filter << schedule
 			end
 		end

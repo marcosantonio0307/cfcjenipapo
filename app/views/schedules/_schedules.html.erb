@@ -9,8 +9,8 @@
 		<tbody>
 			<% @schedules.each do |schedule| %>
 			<tr>
-				<td><%= datebr(schedule.date) %></td>
-				<td><%= hourbr(schedule.hour) %></td>
+				<td><%= datebr(schedule.date_s) %></td>
+				<td><%= hourbr(schedule.hour_s) %></td>
 				<td><%= schedule.studant.name %></td>
 				<td><%= schedule.studant.fone %></td>
 				<td width="12%"><%= link_to 'registrar aula', schedule_class_path(schedule), class: 'btn btn-success' %></td>
