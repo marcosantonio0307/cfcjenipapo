@@ -19,6 +19,8 @@ gem 'uglifier', '>= 1.3.0'
 gem 'wicked_pdf'
 gem 'wkhtmltopdf-binary'
 
+gem 'pg'
+
 gem 'devise'
 gem 'rails-i18n'
 gem 'twitter-bootstrap-rails'
