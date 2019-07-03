@@ -18,49 +18,53 @@
         <span style="float: left; padding: 4px 2em;"><%= link_to (image_tag 'logo.png', :width => '100px'), root_path %></span>
         <nav class="menus"> <!-- Menu de Navegação -->
 
-          <ul>
+          <% if signed_in? %>
+            <ul>
 
-            <li><a href="">Alunos</a>
-              <ul>
-                <li><%= link_to 'Cadastrar Aluno', new_studant_path %></li>
-                <li><%= link_to 'Todos', studants_path %></li>
-              </ul>
-            </li>
-            <li><a href="">Processos</a>
-              <ul>
-                <li><%= link_to 'Novo Processo', new_procedure_path, data:{confirm: 'Registrar Novo Processo?'} %></li>
-                <li><%= link_to 'Abertos', procedures_opens_path %></li>
-                <li><%= link_to 'Concluidos', procedures_closeds_path %></li>
-                <li><%= link_to 'Todos', procedures_path %></li>
-              </ul>
-            </li>
-            <li><a href="">Agendamentos</a>
-              <ul>
-                <li><%= link_to 'Agendar Aluno', schedules_select_path %></li>
-                <li><%= link_to 'Agend. do Dia', schedules_day_path %></li>
-                <li><%= link_to 'Todos Agend.', schedules_path %></li>
-              </ul>
-            </li>
-            <li><a href="">Contas</a>
-              <ul>
-                <li><%= link_to 'A Pagar', expenses_path %></li>
-                <li><%= link_to 'A Receber', portions_pending_path %></li>
-                <li><%= link_to 'Nova Despesa', cashes_new_out_path, data:{confirm: 'Registrar Nova Despesa?'} %></li>
-                <li><%= link_to 'Nova Receita', cashes_new_in_path, data:{confirm: 'Registrar Nova Receita?'} %></li>
-              </ul>
-            </li>
-            <li><a href="">Relatorios</a>
-              <ul>
-                <li><%= link_to 'Parcel. em Atraso', portions_arrears_path %></li>
-                <li><%= link_to 'Contas em Atraso', expenses_arrears_path %></li>
-                <li><%= link_to 'Receitas', cashes_cash_in_path %></li>
-                <li><%= link_to 'Despesas', cashes_cash_out_path %></li>
-                <li><%= link_to 'Caixa do Dia', cashes_cash_day_path %></li>
-              </ul>
-            </li>
-            <li><a href="">Usuários</a>
-              
-            </li>
+              <li><a href="">Alunos</a>
+                <ul>
+                  <li><%= link_to 'Cadastrar Aluno', new_studant_path %></li>
+                  <li><%= link_to 'Todos', studants_path %></li>
+                </ul>
+              </li>
+              <li><a href="">Processos</a>
+                <ul>
+                  <li><%= link_to 'Novo Processo', new_procedure_path, data:{confirm: 'Registrar Novo Processo?'} %></li>
+                  <li><%= link_to 'Abertos', procedures_opens_path %></li>
+                  <li><%= link_to 'Concluidos', procedures_closeds_path %></li>
+                  <li><%= link_to 'Todos', procedures_path %></li>
+                </ul>
+              </li>
+              <li><a href="">Agendamentos</a>
+                <ul>
+                  <li><%= link_to 'Agendar Aluno', schedules_select_path %></li>
+                  <li><%= link_to 'Agend. do Dia', schedules_day_path %></li>
+                  <li><%= link_to 'Todos Agend.', schedules_path %></li>
+                </ul>
+              </li>
+              <li><a href="">Contas</a>
+                <ul>
+                  <li><%= link_to 'A Pagar', expenses_path %></li>
+                  <li><%= link_to 'A Receber', portions_pending_path %></li>
+                  <li><%= link_to 'Nova Despesa', cashes_new_out_path, data:{confirm: 'Registrar Nova Despesa?'} %></li>
+                  <li><%= link_to 'Nova Receita', cashes_new_in_path, data:{confirm: 'Registrar Nova Receita?'} %></li>
+                </ul>
+              </li>
+              <li><a href="">Relatorios</a>
+                <ul>
+                  <li><%= link_to 'Parcel. em Atraso', portions_arrears_path %></li>
+                  <li><%= link_to 'Contas em Atraso', expenses_arrears_path %></li>
+                  <li><%= link_to 'Receitas', cashes_cash_in_path %></li>
+                  <li><%= link_to 'Despesas', cashes_cash_out_path %></li>
+                  <li><%= link_to 'Caixa do Dia', cashes_cash_day_path %></li>
+                </ul>
+              </li>
+              <li><a href="">Usuários</a>
+                
+              </li>
+
+              <li><%= link_to 'Sair', destroy_user_session_path, method: :delete %></li>
+            <% end %>
           </ul>
 
         </nav> <!-- fim do Menu -->

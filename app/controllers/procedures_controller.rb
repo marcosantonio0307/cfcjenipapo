@@ -113,5 +113,10 @@ class ProceduresController < ApplicationController
 	def show
 		@procedure = Procedure.find(params[:id])
 		@portions = Portion.where(procedure_id: @procedure.id)
+
+		respond_to do |format|
+			format.html
+			format.pdf {render template: 'procedures/print', pdf: 'print'}
+		end
 	end
 end
