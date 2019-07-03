@@ -3,8 +3,30 @@
 <head>
 	<meta charset="utf-8">
 	<title>carnê</title>
+	<style type="text/css">
+		.portion {
+			border: solid 1px;
+		}
+
+		.right {
+			border-left: solid 1px;
+		}
+
+		label {
+			font-weight: bold;
+		}
+	</style>
 </head>
 <body>
-
+	<% @procedure.portion.each do |portion| %>
+		<div class="portion">
+			<p><%= wicked_pdf_image_tag 'banner.png', :width => '100px' %></p>
+			<label>ALUNO:</label>
+			<span><%=@procedure.studant.name %></span>
+			<div class="right">
+				
+			</div>
+		</div>
+	<% end %>
 </body>
 </html>
