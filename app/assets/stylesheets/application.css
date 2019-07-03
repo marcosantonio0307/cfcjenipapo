@@ -200,3 +200,14 @@ label[for="bt_menu"] {
 .index-container span {
 	padding: 4px 2.5em;
 }
+
+.form-login {
+	width: 60%;
+	margin: 6em auto;
+}
+
+.form-login img {
+	width: 50%;
+	float: left;
+	margin-right: 2em;
+}

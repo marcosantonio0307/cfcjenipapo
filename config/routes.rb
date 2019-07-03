@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+ 	devise_for :users
 	get 'procedures/:id/select_studant' => 'procedures#select_studant', as: :select_studant_procedure
 	get 'procedures/:id/selection' => 'procedures#selection', as: :selection_procedure
 	get 'procedures/:id/payment' => 'procedures#payment', as: :payment_procedure
