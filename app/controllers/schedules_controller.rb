@@ -41,7 +41,6 @@ class SchedulesController < ApplicationController
 		@schedule = Schedule.find(params[:id])
 		date = params[:date_s].to_time
 		hour = params[:hour_s].to_time
-		hour = hour.strftime("%H:%M")
 		@schedule.update(date_s: date, hour_s: hour)
 		redirect_to schedules_day_path, notice: 'Agendamento Salvo!'
 	end
