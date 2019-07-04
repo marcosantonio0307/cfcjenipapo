@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_07_03_184400) do
+ActiveRecord::Schema.define(version: 2019_07_04_122505) do
 
   create_table "cashes", force: :cascade do |t|
     t.string "category"
@@ -56,7 +56,7 @@ ActiveRecord::Schema.define(version: 2019_07_03_184400) do
   create_table "schedules", force: :cascade do |t|
     t.integer "studant_id"
     t.date "date_s"
-    t.time "hour_s"
+    t.string "hour_s"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["studant_id"], name: "index_schedules_on_studant_id"
