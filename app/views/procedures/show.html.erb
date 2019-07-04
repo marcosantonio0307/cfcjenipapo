@@ -11,6 +11,7 @@
 			<span><%= link_to 'Finalizar Processo', finish_procedure_path(@procedure), class: 'btn btn-success' %></span>
 		<% end %>
 		<span><%= link_to 'Excluir', procedure_path(@procedure), method: :delete, class: 'btn btn-danger', data:{confirm: 'Deseja Excluir o Processo?'} %></span>
+		<span><%= link_to (image_tag 'imprimir.png', :width => '40px', :height => '40px'), "#{@procedure.id}.pdf" %></span>
 	</div>
 	<div class="form-group">
 		<%= label_tag :aluno %>

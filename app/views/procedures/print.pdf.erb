@@ -4,12 +4,32 @@
 	<meta charset="utf-8">
 	<title>carnê</title>
 	<style type="text/css">
+
 		.portion {
-			border: solid 1px;
+			width: 100%;
+			float: left;
+		}
+
+		.left {
+			width: 40%;
+			float: left;
+			margin-bottom: 2.5em;
 		}
 
 		.right {
+			float: left;
+			width: 55%;
 			border-left: solid 1px;
+			padding-left: 2em;
+			margin-bottom: 2.5em;
+		}
+
+		.division {
+			margin: 0;
+			margin-bottom: 1em;
+			padding: 0;
+			float: left;
+			width: 100%;
 		}
 
 		label {
@@ -19,12 +39,43 @@
 </head>
 <body>
 	<% @procedure.portion.each do |portion| %>
+
 		<div class="portion">
-			<p><%= wicked_pdf_image_tag 'banner.png', :width => '100px' %></p>
-			<label>ALUNO:</label>
-			<span><%=@procedure.studant.name %></span>
+			<div class="left">
+				<p><%= wicked_pdf_image_tag 'banner.png', :width => '100px' %></p>
+				<label>Nº</label>
+				<span><%=portion.id %></span><br><br>
+				<label>ALUNO:</label>
+				<span><%= @procedure.studant.name %></span><br><br>
+				<label>CPF:</label>
+				<span><%= @procedure.studant.cpf %></span><br><br>
+				<label>PROCESSO:</label>
+				<span><%= @procedure.number %></span><br><br>
+				<label>VENCIMENTO:</label>
+				<span><%= datebr(portion.due_date) %></span><br><br>
+				<label>VALOR:</label>
+				<span><%= number_to_currency portion.price %></span>
+				<p>*Pagavel Apenas na Auto Escola</p>
+				<label>DATA:</label>
+				<span>____/____/_________</span><br><br>
+			</div>
 			<div class="right">
-				
+				<p><%= wicked_pdf_image_tag 'banner.png', :width => '100px' %></p>
+				<label>Nº</label>
+				<span><%=portion.id %></span><br><br>
+				<label>ALUNO:</label>
+				<span><%= @procedure.studant.name %></span><br><br>
+				<label>CPF:</label>
+				<span><%= @procedure.studant.cpf %></span><br><br>
+				<label>PROCESSO:</label>
+				<span><%= @procedure.number %></span><br><br>
+				<label>VENCIMENTO:</label>
+				<span><%= datebr(portion.due_date) %></span><br><br>
+				<label>VALOR:</label>
+				<span><%= number_to_currency portion.price %></span>
+				<p>*Pagavel Apenas na Auto Escola</p>
+				<label>DATA:</label>
+				<span>____/____/_________</span><br><br>
 			</div>
 		</div>
 	<% end %>
