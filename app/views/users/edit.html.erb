@@ -1,0 +1,23 @@
+<div class="label">
+	<span>Alterar Senha</span>
+</div>
+
+<div class="login_area edit-password">
+	<div class="form_login">
+		<%= form_for @user do |f| %>
+			<div class="field">
+	          <%= f.label :usuario %><br>
+	          <%= f.email_field :email, :disabled=>true, class: '' %>
+	        </div><br>
+
+	        <div class="field">
+	          <%= f.label 'Nova Senha' %><br>
+	          <%= text_field_tag :password %>
+	        </div><br>
+
+	        <div>
+	        	<%= f.submit :salvar, class: 'btn btn-success' %>
+	        </div>
+		<% end %>
+	</div>
+</div>
