@@ -39,6 +39,7 @@ Rails.application.routes.draw do
 	resources :schedules, only:[:index, :edit, :update, :destroy, :show]
 	resources :expenses, only:[:index, :new, :create, :destroy, :show]
 	resources :cashes, only:[:index, :new, :edit, :update, :destroy, :show]
+	resources :users, only:[:index, :new, :create, :edit, :update]
 	resources :procedures do
 		resources :portions
 	end

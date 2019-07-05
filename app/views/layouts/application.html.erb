@@ -60,7 +60,9 @@
                 </ul>
               </li>
               <li><a href="">Usuários</a>
-                
+                <ul>
+                  <li><%= link_to 'Alterar Senha', edit_user_path(current_user) %></li>
+                </ul>
               </li>
 
               <li><%= link_to 'Sair', destroy_user_session_path, method: :delete %></li>

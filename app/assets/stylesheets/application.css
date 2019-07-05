@@ -211,3 +211,7 @@ label[for="bt_menu"] {
 	float: left;
 	margin-right: 2em;
 }
+
+.edit-password {
+	margin-left: 40%;
+}
