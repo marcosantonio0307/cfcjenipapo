@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>Recipo</title>
+	</head>
+	<body>
+		<div  style="width: 90%; margin: 0 auto;">
+			<%= wicked_pdf_image_tag 'banner.png', :width => '200px' %>
+			<h2 align="center">RECIBO</h2>
+
+			<p>Recebemos do(a) Aluno(a) <b><%= @procedure.studant.name.upcase %></b> a impotância de <%= number_to_currency @procedure.portion.last.price %> referente ao pagamento do processo de habilitação. </p>
+			<p>Para maior clareza firmo o presente.</p><br>
+
+			<p align="center">São Raimundo Nonato-PI, <%= datebr(Time.zone.now) %></p><br><br><br>
+
+			<p align="center">___________________________________________________________</p>
+			<p align="center">Auto Escola Jenipapo</p>
+		</div>
+
+	</body>
+</html>
