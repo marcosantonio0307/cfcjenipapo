@@ -114,9 +114,16 @@ class ProceduresController < ApplicationController
 		@procedure = Procedure.find(params[:id])
 		@portions = Portion.where(procedure_id: @procedure.id)
 
-		respond_to do |format|
-			format.html
-			format.pdf {render template: 'procedures/print', pdf: 'print'}
+		if @procedure.portion.last.status != 'pago'
+			respond_to do |format|
+				format.html
+				format.pdf {render template: 'procedures/print', pdf: 'print'}
+			end
+		else
+			respond_to do |format|
+				format.html
+				format.pdf {render template: 'procedures/print_receipt', pdf: 'print_receipt'}
+			end
 		end
 	end
 end
