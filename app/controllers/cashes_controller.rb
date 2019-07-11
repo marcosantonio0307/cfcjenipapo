@@ -15,12 +15,10 @@ class CashesController < ApplicationController
 	end
 
 	def cash_day
-		today = Time.now
-		today = today.strftime("%Y-%m-%d")
 		@cashes_in = Cash.where(category: "Receita")
-		@cashes_in = @cashes_in.where "created_at like ?", "%#{today}%"
+		@cashes_in = filter_day(@cashes_in)
 		@cashes_out = Cash.where(category: "Despesa")
-		@cashes_out = @cashes_out.where "created_at like ?", "%#{today}%"
+		@cashes_out = filter_day(@cashes_out)
 	end
 
 	def new_in
@@ -67,5 +65,20 @@ class CashesController < ApplicationController
 			end
 			@cashes = filter
 		end
+	end
+
+	private
+
+	def filter_day(base)
+		today = Time.zone.now
+		today = today.strftime("%Y-%m-%d")
+		filter = []
+		base.each do |b|
+			if b.created_at.strftime("%Y-%m-%d") == today
+				filter << b
+			end
+		end
+		base = filter
+		base.sort!
 	end
 end

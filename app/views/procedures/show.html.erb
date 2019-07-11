@@ -22,13 +22,17 @@
 		<%= text_field_tag :number, @procedure.number, :disabled=>true, class: 'form-control' %>
 	</div>
 	<div class="form-group">
-		<% if datebr(@procedure.due_date) < (due = Time.zone.now + 60.day) %>
-			<div class="alert alert-danger">
-				<span>Atenção! Processo Esta Perto do Vencimento!</span>
-			</div>
+		<% if @procedure.due_date != nil %>
+			<% if datebr(@procedure.due_date) < (due = Time.zone.now + 60.day) %>
+				<div class="alert alert-danger">
+					<span>Atenção! Processo Esta Perto do Vencimento!</span>
+				</div>
+			<% end %>
 		<% end %>
 		<%= label_tag 'Vencimento do Processo' %>
-		<%= text_field_tag :due_date, datebr(@procedure.due_date), :disabled=>true, class: 'form-control' %>
+		<% if @procedure.due_date != nil %>	
+			<%= text_field_tag :due_date, datebr(@procedure.due_date), :disabled=>true, class: 'form-control' %>
+		<% end %>
 	</div>
 	<div class="form-group">
 		<%= label_tag :categoria %>
