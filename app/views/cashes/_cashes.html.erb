@@ -13,6 +13,8 @@
 				<td><%= cash.category %></td>
 				<td><%= cash.description %></td>
 				<td><%= number_to_currency cash.price %></td>
+				<td><%= link_to :editar, edit_cash_path(cash), class: 'btn btn-warning' %></td>
+				<td><%= link_to :apagar, cash_path(cash), method: :delete, class: 'btn btn-danger', data:{confirm: 'deseja excluir?'} %></td>
 			</tr>
 			<% end %>
 		</tbody>

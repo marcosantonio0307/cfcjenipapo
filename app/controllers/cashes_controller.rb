@@ -67,6 +67,13 @@ class CashesController < ApplicationController
 		end
 	end
 
+	def destroy
+		id = params[:id]
+		Cash.destroy id
+
+		redirect_to cashes_path, notice: 'apagado com sucesso!'
+	end
+
 	private
 
 	def filter_day(base)
