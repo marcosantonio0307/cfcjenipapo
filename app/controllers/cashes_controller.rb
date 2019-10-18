@@ -82,26 +82,38 @@ class CashesController < ApplicationController
 				if cash.created_at.strftime("%Y-%m-%d") == @begin_date
 					if cash.category == 'Receita'
 						@cashes_in << cash
-						@total_cashes_in += cash.price
+						if cash.price != nil
+							@total_cashes_in += cash.price
+						end
 					else
 						@cashes_out << cash
-						@total_cashes_out += cash.price
+						if cash.price != nil
+							@total_cashes_out += cash.price
+						end	
 					end
 				elsif cash.created_at.strftime("%Y-%m-%d") > @begin_date && cash.created_at.strftime("%Y-%m-%d") < @end_date
 					if cash.category == 'Receita'
 						@cashes_in << cash
-						@total_cashes_in += cash.price
+						if cash.price != nil
+							@total_cashes_in += cash.price
+						end
 					else
 						@cashes_out << cash
-						@total_cashes_out += cash.price
+						if cash.price != nil
+							@total_cashes_out += cash.price
+						end	
 					end
 				elsif cash.created_at.strftime("%Y-%m-%d") == @end_date
 					if cash.category == 'Receita'
 						@cashes_in << cash
-						@total_cashes_in += cash.price
+						if cash.price != nil
+							@total_cashes_in += cash.price
+						end
 					else
 						@cashes_out << cash
-						@total_cashes_out += cash.price
+						if cash.price != nil
+							@total_cashes_out += cash.price
+						end	
 					end
 				end
 			end
