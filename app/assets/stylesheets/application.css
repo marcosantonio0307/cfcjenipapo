@@ -215,3 +215,16 @@ label[for="bt_menu"] {
 .edit-password {
 	margin-left: 40%;
 }
+
+.box-resume {
+	width: 33.33%;
+	float: left;
+	text-align: justify;
+	background: #009551;
+	color: #fff;
+	height: 230px;
+	padding-top: 1em;
+	padding-left: 3em;
+	padding-right: 2em;
+	border: solid 1px;
+}
