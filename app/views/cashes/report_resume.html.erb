@@ -26,15 +26,15 @@
 		<h1 align="center">Receitas</h1>
 		<table class="table table-bordered">
 			<thead>
-				<th>Nº</th>
 				<th>Data</th>
+				<th>Descrição</th>
 				<th>Valor</th>
 			</thead>
 			<tbody>
 				<% @cashes_in.each do |cash| %>
 				<tr>
-					<td><%= cash.id %></td>
 					<td><%= datebr(cash.created_at) %></td>
+					<td><%= cash.description %></td>
 					<% if cash.price != nil %>
 						<td><%= number_to_currency(cash.price) %></td>
 					<% end %>
@@ -47,15 +47,15 @@
 		<h1 align="center">Despesas</h1>
 		<table class="table table-bordered">
 			<thead>
-				<th>Nº</th>
 				<th>Data</th>
+				<th>Descrição</th>
 				<th>Valor</th>
 			</thead>
 			<tbody>
 				<% @cashes_out.each do |cash| %>
 				<tr>
-					<td><%= cash.id %></td>
 					<td><%= datebr(cash.created_at) %></td>
+					<td><%= cash.description %></td>
 					<% if cash.price != nil %>
 						<td><%= number_to_currency(cash.price) %></td>
 					<% end %>
