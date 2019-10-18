@@ -30,6 +30,8 @@ Rails.application.routes.draw do
 	get	'cashes/cash_out' => 'cashes#cash_out'
 	get	'cashes/cash_day' => 'cashes#cash_day'
 	get	'cashes/filter_date' => 'cashes#filter_date'
+	get	'cashes/resume' => 'cashes#resume'
+	get 'cashes/report_resume' => 'cashes#report_resume'
 
 	get 'expenses/:id/pay' => 'expenses#pay', as: :pay_expense
 	get 'expenses/filter_date' => 'expenses#filter_date'

@@ -67,6 +67,49 @@ class CashesController < ApplicationController
 		end
 	end
 
+	def report_resume
+		@cashes = Cash.all
+		@begin_date = params[:begin_date]
+		@end_date = params[:end_date]
+
+		@cashes_in = []
+		@total_cashes_in = 0
+		@cashes_out = []
+		@total_cashes_out = 0
+
+		if @begin_date <= @end_date
+			@cashes.each do |cash|
+				if cash.created_at.strftime("%Y-%m-%d") == @begin_date
+					if cash.category == 'Receita'
+						@cashes_in << cash
+						@total_cashes_in += cash.price
+					else
+						@cashes_out << cash
+						@total_cashes_out += cash.price
+					end
+				elsif cash.created_at.strftime("%Y-%m-%d") > @begin_date && cash.created_at.strftime("%Y-%m-%d") < @end_date
+					if cash.category == 'Receita'
+						@cashes_in << cash
+						@total_cashes_in += cash.price
+					else
+						@cashes_out << cash
+						@total_cashes_out += cash.price
+					end
+				elsif cash.created_at.strftime("%Y-%m-%d") == @end_date
+					if cash.category == 'Receita'
+						@cashes_in << cash
+						@total_cashes_in += cash.price
+					else
+						@cashes_out << cash
+						@total_cashes_out += cash.price
+					end
+				end
+			end
+		end
+
+		@total_resume = @total_cashes_in - @total_cashes_out
+	end
+
 	def destroy
 		id = params[:id]
 		Cash.destroy id

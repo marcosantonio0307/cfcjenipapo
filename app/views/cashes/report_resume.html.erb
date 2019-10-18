@@ -1,0 +1,67 @@
+<div class="label">
+	<span>Resume entre <%= @begin_date %> e <%= @end_date %></span>
+</div>
+
+<div class="container-big">
+	<div class="">
+		<p><input type='button' value='Voltar' onclick='history.go(-1)' class="btn btn-default" /></p>
+		<div class="box-resume">
+			<h2>Total de Receitas do Periodo</h2><br>
+			<h3><b>Total:</b> <%= number_to_currency(@total_cashes_in) %></h3>
+		</div>
+		<div class="box-resume">
+			<h2>Total de Despesas do Periodo</h2><br>
+			<h3><b>Total:</b> <%= number_to_currency(@total_cashes_out) %></h3>
+		</div>
+		<div class="box-resume liq">
+			<br><br>
+			<h2><b>Total liquido</b></h2>
+			<h3><b><%= number_to_currency(@total_resume) %></b></h3>
+		</div>
+	</div>
+</div><br>
+
+<div class="row container-big">
+	<div class="col-lg-6 col-md-6">
+		<h1 align="center">Receitas</h1>
+		<table class="table table-bordered">
+			<thead>
+				<th>Nº</th>
+				<th>Data</th>
+				<th>Valor</th>
+			</thead>
+			<tbody>
+				<% @cashes_in.each do |cash| %>
+				<tr>
+					<td><%= cash.id %></td>
+					<td><%= datebr(cash.created_at) %></td>
+					<% if cash.price != nil %>
+						<td><%= number_to_currency(cash.price) %></td>
+					<% end %>
+				</tr>
+				<% end %>
+			</tbody>
+		</table>
+	</div>
+	<div class="col-lg-6 col-md-6">
+		<h1 align="center">Despesas</h1>
+		<table class="table table-bordered">
+			<thead>
+				<th>Nº</th>
+				<th>Data</th>
+				<th>Valor</th>
+			</thead>
+			<tbody>
+				<% @cashes_out.each do |cash| %>
+				<tr>
+					<td><%= cash.id %></td>
+					<td><%= datebr(cash.created_at) %></td>
+					<% if cash.price != nil %>
+						<td><%= number_to_currency(cash.price) %></td>
+					<% end %>
+				</tr>
+				<% end %>
+			</tbody>
+		</table>
+	</div>
+</div>
