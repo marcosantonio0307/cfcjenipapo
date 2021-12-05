@@ -9,7 +9,7 @@
 			<%= wicked_pdf_image_tag 'banner.png', :width => '200px' %>
 			<h2 align="center">RECIBO</h2>
 
-			<p>Recebemos do(a) Aluno(a) <b><%= @procedure.studant.name.upcase %></b> a impotância de <%= number_to_currency @procedure.portion.last.price %> referente ao pagamento do processo de habilitação. </p>
+			<p>Recebemos do(a) Aluno(a) <b><%= @procedure.studant.name.upcase %></b> a importância de <%= number_to_currency @procedure.portion.last.price %> referente ao pagamento do processo de habilitação. </p>
 			<p>Para maior clareza firmo o presente.</p><br>
 
 			<p align="center">São Raimundo Nonato-PI, <%= datebr(Time.zone.now) %></p><br><br><br>
